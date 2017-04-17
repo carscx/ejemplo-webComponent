@@ -1,0 +1,15 @@
+{
+  "data": {
+    "currencies": {
+      "usd": {
+        "venta": "15.50",
+        "compra": "15.00"
+      },
+      "eur": {
+        "venta": "18.50",
+        "compra": "18.00"
+      }
+    }
+  },
+  "success": "OK"
+}

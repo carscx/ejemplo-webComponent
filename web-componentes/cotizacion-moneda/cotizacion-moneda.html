@@ -1,0 +1,69 @@
+<dom-module id="cotizacion-moneda">
+	<link rel="import" type="css" href="../../styles/melon.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+	<link rel="import" href="ajax-service.html">
+	<template>
+
+		<link rel="import" type="css" href="sky.css">
+		<link rel="import" type="css" href="font-awesome/css/font-awesome.css">
+
+		<paper-tabs selected="{{selected}}" link>
+			<paper-tab>Dolar <i class="fa fa-dollar pull-right"></i></paper-tab>
+			<paper-tab>Euro <i class="fa fa-euro pull-right"></i></paper-tab>
+		</paper-tabs>
+		<iron-pages selected="{{selected}}">
+			<div>
+				<ajax-service currencies="{{currencies}}"></ajax-service>
+				<hr>
+				<p>Compra: <i class="fa fa-dollar"></i> {{currencies.usd.compra}}</p>
+				<p>Venta: <i class="fa fa-dollar"></i> {{currencies.usd.venta}}</p>
+			</div>
+			<div>
+				<hr>
+				<p>Compra: <i class="fa fa-euro"></i> {{currencies.eur.compra}}</p>
+				<p>Venta: <i class="fa fa-euro"></i> {{currencies.eur.venta}}</p>
+			</div>
+		</iron-pages>
+	</template>
+
+	<script>
+		HTMLImports.whenReady(function() {
+			Polymer({
+				is: 'cotizacion-moneda',
+				properties : {
+					selected: {
+						type: Number,
+						value: 0
+					},
+					model: {
+						type: Object,
+						value: function() {
+							return {
+								tab1: {
+									content: {
+										compra: "15.50",
+										venta: "15.00"
+									}
+								},
+								tab2: { content: {
+									compra: "18.50",
+									venta: "18.00"
+								} }
+							}
+						}
+					}
+				},
+		        _toArray: function(obj) {
+		            return Object.keys(obj).map(function(key) {
+		                return {
+		                    name: key,
+		                    value: obj[key]
+		                };
+		            });
+		        }
+			});
+		});
+	</script>
+</dom-module>

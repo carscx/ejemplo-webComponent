@@ -1,0 +1,12 @@
+{
+  "entrypoint": "index.html",
+  "sources": [
+    "scripts/**/*",
+    "media/**/*",
+    "web-components/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}
