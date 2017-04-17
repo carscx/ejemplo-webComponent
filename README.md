@@ -18,4 +18,6 @@ Situarse en la carpeta del repositorio y Lanzar servidor local con Polymer:
     
 Ir a la direccion: http://localhost:3002
 
-## Eso es todo.
+### Eso es todo.
+
+Para más información sobre [Polymer CLI](https://www.polymer-project.org/1.0/docs/tools/polymer-cli)
