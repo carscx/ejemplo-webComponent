@@ -5,7 +5,7 @@ Para ver la prueba en funcionamiento, seguir los siguientes pasos
 
 Clonar el repositorio:
 
-    $ git clone 
+    $ git clone https://github.com/carscx/ejemplo-webComponent.git
 
 Instalar Polymer-Cli via npm:
 
