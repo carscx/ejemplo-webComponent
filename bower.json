@@ -1,0 +1,32 @@
+{
+  "name": "poly01",
+  "description": "Prueba de Concepto con widgets HTML5",
+  "main": "index.html",
+  "keywords": [
+    "prueba",
+    "concepto",
+    "html5",
+    "widgets",
+    "webComponents"
+  ],
+  "authors": [
+    "Carlos Santos - VeriTran"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.veritran.net",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-tabs": "PolymerElements/paper-tabs#^1.8.0",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.8",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.4.3",
+    "iron-icons": "PolymerElements/iron-icons#^1.2.0",
+    "fancy-carousel": "annsonn/fancy-carousel#^1.0.3"
+  }
+}

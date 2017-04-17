@@ -1,0 +1,40 @@
+/* ESTILOS PARA LA APLICACION */
+
+.body {font-family: Roboto, arial, serif; margin-top: 80px;}
+.container-widgets {
+	border: 1px solid blueviolet;
+	margin-top: 30px;
+	position: relative;
+}
+
+.container-jquery h3 {
+	margin:  0; padding: 0 0 20px 0;
+}
+.container-jquery {
+	border: 1px solid blue;
+	padding: 20px;
+}
+/*
+paper-tabs {
+	font-family: 'Roboto', 'Noto', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	text-transform: uppercase;
+	margin-bottom: 1px;
+}
+ */
+
+.logo-webcomponents {
+	height: 64px;
+	position: absolute;
+	top: 0;
+	width: 64px;
+	z-index: 99999;
+}
+
+.logo-webcomponents.logo-left {left:  0;}
+.logo-webcomponents.logo-right {right: 0;}
+
+.ml20 {margin-left: 20px;}
+
+code.language-markup {max-height: 300px; overflow-y: auto; overflow-x: hidden;}

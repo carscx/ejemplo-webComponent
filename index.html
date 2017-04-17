@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Prueba de concepto con Web Components y Polymer</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+		<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="stylesheet" href="styles/prism.css">
+		<script src="scripts/prism.js"></script>
+		<link rel="import" href="bower_components/polymer/polymer.html">
+		<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+		<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+		<link rel="import" href="web-componentes/cotizacion-moneda/cotizacion-moneda.html">
+		<link rel="import" href="bower_components/fancy-carousel/fancy-carousel.html">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Prueba Widgets</a>
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="index.html">Inicio</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container body">
+			<div class="col-xs-12 container-jquery">
+				<h3 class="titulo-aplicacion"></h3>
+				<div class="col-xs-4" id="datepicker"></div>
+				<div class="col-xs-8">
+					<pre class="language-markup">
+						<code class="language-markup">
+&lt;div class="col-xs-4" id="datepicker">&lt;/div>
+&lt;script &gt;
+	$( function() {
+    	$( "#datepicker" ).datepicker();
+	} );
+&lt;/script&gt;
+					</code>
+				</div>
+
+			</div>
+			<div class="col-xs-12 container-widgets">
+				<div class="col-xs-4">
+					<img src="media/logo-webcomponents.png" class="logo-webcomponents logo-right" title="Creado con WebComponents">
+					<h3>Esto es un widget con WebComponents</h3>
+					<cotizacion-moneda></cotizacion-moneda>
+				</div>
+				<div class="col-xs-8">
+					<h3>cotizacion-moneda.html</h3>
+					<pre class="language-markup">
+						<code class="language-markup"  style="max-height: 300px; overflow-y: auto;">
+&#x3C;dom-module id=&#x22;cotizacion-moneda&#x22;&#x3E;
+&#x9;&#x3C;link rel=&#x22;import&#x22; type=&#x22;css&#x22; href=&#x22;../../styles/melon.css&#x22;&#x3E;
+
+&#x9;&#x3C;script src=&#x22;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+&#x9;&#x3C;link rel=&#x22;import&#x22; href=&#x22;../../bower_components/iron-ajax/iron-ajax.html&#x22;&#x3E;
+&#x9;&#x3C;link rel=&#x22;import&#x22; href=&#x22;ajax-service.html&#x22;&#x3E;
+&#x9;&#x3C;template&#x3E;
+
+&#x9;&#x9;&#x3C;link rel=&#x22;import&#x22; type=&#x22;css&#x22; href=&#x22;sky.css&#x22;&#x3E;
+&#x9;&#x9;&#x3C;link rel=&#x22;import&#x22; type=&#x22;css&#x22; href=&#x22;font-awesome/css/font-awesome.css&#x22;&#x3E;
+
+&#x9;&#x9;&#x3C;paper-tabs selected=&#x22;{{selected}}&#x22; link&#x3E;
+&#x9;&#x9;&#x9;&#x3C;paper-tab&#x3E;Dolar &#x3C;i class=&#x22;fa fa-dollar pull-right&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/paper-tab&#x3E;
+&#x9;&#x9;&#x9;&#x3C;paper-tab&#x3E;Euro &#x3C;i class=&#x22;fa fa-euro pull-right&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/paper-tab&#x3E;
+&#x9;&#x9;&#x3C;/paper-tabs&#x3E;
+&#x9;&#x9;&#x3C;iron-pages selected=&#x22;{{selected}}&#x22;&#x3E;
+&#x9;&#x9;&#x9;&#x3C;div&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;ajax-service currencies=&#x22;{{currencies}}&#x22;&#x3E;&#x3C;/ajax-service&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;hr&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;p&#x3E;Compra: &#x3C;i class=&#x22;fa fa-dollar&#x22;&#x3E;&#x3C;/i&#x3E; {{currencies.usd.compra}}&#x3C;/p&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;p&#x3E;Venta: &#x3C;i class=&#x22;fa fa-dollar&#x22;&#x3E;&#x3C;/i&#x3E; {{currencies.usd.venta}}&#x3C;/p&#x3E;
+&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+&#x9;&#x9;&#x9;&#x3C;div&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;hr&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;p&#x3E;Compra: &#x3C;i class=&#x22;fa fa-euro&#x22;&#x3E;&#x3C;/i&#x3E; {{currencies.eur.compra}}&#x3C;/p&#x3E;
+&#x9;&#x9;&#x9;&#x9;&#x3C;p&#x3E;Venta: &#x3C;i class=&#x22;fa fa-euro&#x22;&#x3E;&#x3C;/i&#x3E; {{currencies.eur.venta}}&#x3C;/p&#x3E;
+&#x9;&#x9;&#x9;&#x3C;/div&#x3E;
+&#x9;&#x9;&#x3C;/iron-pages&#x3E;
+&#x9;&#x3C;/template&#x3E;
+
+&#x9;&#x3C;script&#x3E;
+&#x9;&#x9;HTMLImports.whenReady(function() {
+&#x9;&#x9;&#x9;Polymer({
+&#x9;&#x9;&#x9;&#x9;is: &#x27;cotizacion-moneda&#x27;,
+&#x9;&#x9;&#x9;&#x9;properties : {
+&#x9;&#x9;&#x9;&#x9;&#x9;selected: {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;type: Number,
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;value: 0
+&#x9;&#x9;&#x9;&#x9;&#x9;},
+&#x9;&#x9;&#x9;&#x9;&#x9;model: {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;type: Object,
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;value: function() {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tab1: {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;content: {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;compra: &#x22;15.50&#x22;,
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;venta: &#x22;15.00&#x22;
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;},
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tab2: { content: {
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;compra: &#x22;18.50&#x22;,
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;venta: &#x22;18.00&#x22;
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;} }
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}
+&#x9;&#x9;&#x9;&#x9;&#x9;}
+&#x9;&#x9;&#x9;&#x9;},
+&#x9;&#x9;        _toArray: function(obj) {
+&#x9;&#x9;            return Object.keys(obj).map(function(key) {
+&#x9;&#x9;                return {
+&#x9;&#x9;                    name: key,
+&#x9;&#x9;                    value: obj[key]
+&#x9;&#x9;                };
+&#x9;&#x9;            });
+&#x9;&#x9;        }
+&#x9;&#x9;&#x9;});
+&#x9;&#x9;});
+&#x9;&#x3C;/script&#x3E;
+&#x3C;/dom-module&#x3E;
+						</code>
+					</pre>
+					<h3>Uso en index.html</h3>
+					<pre class="language-markup">
+						<code class="language-markup">
+&#x3C;cotizacion-moneda&#x3E;&#x3C;/cotizacion-moneda&#x3E;
+						</code>
+					</pre>
+				</div>
+  			</div>
+  			<div class="col-xs-4 container-widgets">
+  				<h3>Uso en index.html</h3>
+					<pre class="language-markup">
+						<code class="language-markup">
+&#x3C;fancy-carousel&#x3E;
+	&#x3C;img src="https://app-layout-assets.appspot.com/assets/bg1.jpg"&#x3E;
+	&#x3C;img src="https://app-layout-assets.appspot.com/assets/bg2.jpg"&#x3E;
+	&#x3C;img src="https://app-layout-assets.appspot.com/assets/bg3.jpg"&#x3E;
+	&#x3C;img src="https://app-layout-assets.appspot.com/assets/bg4.jpg"&#x3E;
+&#x3C;/fancy-carousel&#x3E;
+						</code>
+					</pre>
+  				<img src="media/logo-webcomponents.png" class="logo-webcomponents logo-right" title="Creado con WebComponents">
+	  			<fancy-carousel>
+					<img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+					<img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+					<img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+					<img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+				</fancy-carousel>
+			</div>
+			<div class="col-xs-6 container-widgets ml20">
+				<img src="media/logo-webcomponents.png" class="logo-webcomponents logo-right" title="Creado con WebComponents">
+	  			<h3>Uso en index.html</h3>
+	  			<pre class="language-markup">
+						<code class="language-markup">
+&#x3C;fancy-carousel&#x3E;
+	&#x3C;img src="http://lorempixel.com/400/320/sports/"&#x3E;
+	&#x3C;img src="http://lorempixel.com/400/320/food/"&#x3E;
+	&#x3C;img src="http://lorempixel.com/400/320/business/"&#x3E;
+	&#x3C;img src="http://lorempixel.com/400/320/city/"&#x3E;
+&#x3C;/fancy-carousel&#x3E;
+						</code>
+					</pre>
+	  			<fancy-carousel>
+					<img src="http://lorempixel.com/400/320/sports/">
+					<img src="http://lorempixel.com/400/320/food/">
+					<img src="http://lorempixel.com/400/320/business/">
+					<img src="http://lorempixel.com/400/320/city/">
+				</fancy-carousel>
+			</div>
+
+		</div>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="scripts/scripts.js"></script>
+	</body>
+</html>
